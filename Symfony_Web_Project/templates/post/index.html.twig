@@ -1,0 +1,59 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+    <br>
+    {% for message in app.flashes('success') %} {# for loop #}
+
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+    <font color="blue"><h2>LIST OF ALL CLEANERS</h2></font><br>
+
+    <font color="blue"><h5>PLease click on Cleaner's Name to See All Info and Booking About the Cleaner</h5></font>
+
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+
+                <td>Name</td>
+                <td>Company</td>
+                <td>Availability</td>
+                <td>Work Hours</td>
+                <td>Delete</td>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for post in posts %}
+            <tr>
+
+                <td>
+                    <a href="{{ path('post.show', {id: post.id}) }}">
+                        {{ post.name }}
+                    </a>
+                </td>
+
+                <td>{{ post.company }}</td>
+
+                <td>{{ post.available }}</td>
+
+                <td>{{ post.workhour }}</td>
+
+                <td>
+                    <a href="{{ path('post.delete', {id: post.id}) }}">Delete</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock %}

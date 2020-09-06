@@ -1,0 +1,22 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+    <br>
+    <font color="red">Worker's name : </font>{{ post.name }}<br>
+    <font color="red">Worker's Company Name : </font>{{ post.company }}<br>
+    <font color="red">Worker's Availability Situation : </font>{{ post.available }}<br>
+    <font color="red">Worker's Workhour : </font>{{ post.workhour }}<br>
+    <font color="red">Worker's Workhour : </font>{{ post.workdays }}<br>
+    <br>
+
+    {% if post.booking != null %}
+    <font color="red">Worker's booking : </font>{{ post.booking }}<br>
+    {% endif %}
+    {% if post.booking == null %}
+        <font color="red">Worker's booking : </font>No Booking Available For Now<br>
+    {% endif %}
+
+
+
+{% endblock %}

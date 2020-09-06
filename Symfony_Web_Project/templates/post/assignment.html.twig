@@ -1,0 +1,56 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+    <br>
+    {% for message in app.flashes('success') %}
+
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+
+    <font color="blue"><h2>ASSIGNMENT PROCESS</h2><br>
+
+        <h3>Please Choose Company First To Give Assigments</h3>
+        <font color="red"><h5>Different Company Workers Cant Work Together</h5></font>
+        <font color="red"><h5>Click to Company Name One Of Our Cleaners</h5></font><br>
+
+    </font>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <td>Name</td>
+            <td>Company</td>
+            <td>Availability</td>
+            <td>Work Hours</td>
+            <td>Give Assignment</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+
+            <tr>
+
+                <td>{{ post.name }}</td>
+
+                <td>
+                    <a href="{{ path('giveassignmentinfocompany', {id: post.id}) }}">
+                        {{ post.company }}
+                    </a>
+                </td>
+
+
+                <td>{{ post.available }}</td>
+
+                <td>{{ post.workhour }}</td>
+
+                <td>Choose Company First</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
